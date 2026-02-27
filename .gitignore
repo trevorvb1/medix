@@ -1,0 +1,5 @@
+.environment/
+.env
+pyproject.toml
+medix_cache.sqlite
+requirements.txt
