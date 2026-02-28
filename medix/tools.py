@@ -54,4 +54,4 @@ def autocode(clinical_notes: str):
             )
             
     except Exception as e:
-        logging.error(f"Search failed.\n{e}")
+        logging.error(f"Request failed.\n{e}")
