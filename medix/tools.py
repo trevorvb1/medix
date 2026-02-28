@@ -12,7 +12,7 @@ load_dotenv(override=True)
 BASE_URL = os.getenv("BASE_URL")
 RELEASE_ID = os.getenv("RELEASE_ID")
 
-@mcp.tool()
+@mcp.tool(name="autocode")
 def autocode(clinical_notes: str):
     """Autocode turns ambiguous clinical notes into standardised, computable and verifiable Mortality and Mobidity Statistics (MMS) codes."""
 
