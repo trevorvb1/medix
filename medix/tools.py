@@ -15,7 +15,7 @@ RELEASE_ID = os.getenv("RELEASE_ID")
 @mcp.tool()
 def autocode(clinical_notes: str):
     """Autocode turns ambiguous clinical notes into standardised, computable and verifiable Mortality and Mobidity Statistics (MMS) codes."""
-    
+
     if not clinical_notes:
         logging.error("Clinical notes are required for the request to be processed.")
 
@@ -32,7 +32,7 @@ def autocode(clinical_notes: str):
             }
         )
         if response.status_code == 404:
-            logging.error("Clinical notes did not return any results.")
+            logging.error("Clinical notes autocoding process did not yield any results.")
 
         if response.status_code == 200:
             data = response.json()
@@ -54,4 +54,4 @@ def autocode(clinical_notes: str):
             )
             
     except Exception as e:
-        logging.error(f"Request failed.\n{e}")
+        logging.error(f"Clinical notes autocoding process failed.\n{e}")
