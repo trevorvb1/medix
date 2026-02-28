@@ -17,7 +17,7 @@ def autocode(clinical_notes: str):
     """Autocode turns ambiguous clinical notes into standardised, computable and verifiable Mortality and Mobidity Statistics (MMS) codes."""
     
     if not clinical_notes:
-        logging.error("Search text is required to process for request to be processed.")
+        logging.error("Clinical notes are required for the request to be processed.")
 
     try:
         response = requests.get(
@@ -55,5 +55,3 @@ def autocode(clinical_notes: str):
             
     except Exception as e:
         logging.error(f"Search failed.\n{e}")
-
-print(autocode("Patient complains of chronic cough, worsening at night, with a history of asthma."))
