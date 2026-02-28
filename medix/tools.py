@@ -32,7 +32,7 @@ def autocode(clinical_notes: str):
             }
         )
         if response.status_code == 404:
-            logging.error("Search text did not return any results.")
+            logging.error("Clinical notes did not return any results.")
 
         if response.status_code == 200:
             data = response.json()
