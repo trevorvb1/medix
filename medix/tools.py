@@ -6,22 +6,29 @@ import requests
 import logging
 import os
 
-requests_cache.install_cache("medix_cache", expire_after=600)
-load_dotenv(override=True)
+requests_cache.install_cache(
+    cache_name="medix_cache", 
+    expire_after=600
+)
 
-BASE_URL = os.getenv("BASE_URL")
-RELEASE_ID = os.getenv("RELEASE_ID")
+load_dotenv(
+    override=True
+)
+
+WHOICD_API_BASE_URL: str = os.getenv("WHOICD_API_BASE_URL")
+WHOICD_API_RELEASE_ID: str = os.getenv("WHOICD_API_RELEASE_ID")
 
 @mcp.tool(name="autocode")
-def autocode(clinical_notes: str):
-    """Autocode turns ambiguous clinical notes into standardised, computable and verifiable Mortality and Mobidity Statistics (MMS) codes."""
+async def autocode(clinical_notes: str):
 
+    """Autocode turns ambiguous clinical notes into standardised, computable and verifiable Mortality and Mobidity Statistics (MMS)"""
+    
     if not clinical_notes:
         logging.error("Clinical notes are required for the request to be processed.")
 
     try:
         response = requests.get(
-            f"{BASE_URL}/icd/release/11/{RELEASE_ID}/mms/autocode",
+            f"{WHOICD_API_BASE_URL}/icd/release/11/{WHOICD_API_RELEASE_ID}/mms/autocode",
             headers={
                 "Accept": "application/json",
                 "Accept-Language": "en",

@@ -1,7 +1,9 @@
 from medix.server import mcp
 
 def main() -> None:
-    mcp.run(transport="streamable-http")
+    mcp.run(
+        transport="streamable-http"
+    )
 
 if __name__ == "__main__":
     main()
