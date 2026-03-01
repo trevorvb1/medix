@@ -38,5 +38,3 @@ class MedixMCP:
                     logging.error(f"Failed to initialise Medix server.\n{e}")
         assert cls._server is not None
         return cls._server
-
-mcp = MedixMCP.get()

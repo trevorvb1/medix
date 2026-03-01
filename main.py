@@ -1,6 +1,7 @@
-from medix.server import mcp
+from medix.server import MedixMCP
 
 def main() -> None:
+    mcp = MedixMCP.get()
     mcp.run(
         transport="streamable-http"
     )
